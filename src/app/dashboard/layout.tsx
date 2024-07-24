@@ -12,7 +12,6 @@ export default function DashboardLayout({
         <h1>DASHBOARD</h1>
        <Link className={styles.homeLink} href='/dashboard/all-articles'><h2> All Articles</h2></Link>
        <Link className={styles.homeLink} href='/dashboard/create-article'><h2>Create New Article</h2></Link>
-       <Link className={styles.homeLink} href='/dashboard/media'><h2>Media Library</h2></Link> 
        </div>
         {children}
       </section>

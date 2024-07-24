@@ -73,11 +73,11 @@ export async function deleteApi (id:string) {
 
     }
 
-    export const getImages = async () => {
+    export const getArticles = async () => {
 
         try{
     
-            const resp = await fetch(`https://658b02c3ba789a9622384d5a.mockapi.io/images`, {
+            const resp = await fetch('http://localhost:3000/api/', {
                 method: "GET",
                 cache: "no-store"
             })
@@ -92,30 +92,30 @@ export async function deleteApi (id:string) {
         }
     }
 
-export const postImage = async (data:any) => {
+// export const postImage = async (data:any) => {
 
-    try{
+//     try{
 
-        const resp = await fetch(`https://658b02c3ba789a9622384d5a.mockapi.io/images`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
+//         const resp = await fetch(`https://658b02c3ba789a9622384d5a.mockapi.io/images`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify(data)
+//         })
 
-        const imageLoaded = await resp.json()
-        if (imageLoaded)
-        return {success:true, message: "Image loaded correctly"}
-    }
+//         const imageLoaded = await resp.json()
+//         if (imageLoaded)
+//         return {success:true, message: "Image loaded correctly"}
+//     }
 
-    catch (error) {
-        console.log( `ERROR IMAGE POST: ${error}` )
-        return {success: false, message: "Error! Image not loaded. try again"}
-    }
+//     catch (error) {
+//         console.log( `ERROR IMAGE POST: ${error}` )
+//         return {success: false, message: "Error! Image not loaded. try again"}
+//     }
 
 
-}
+// }
 
 
 export const FetchArticleByID = async (idBd:string) => {
@@ -142,8 +142,12 @@ export const FetchArticleByID = async (idBd:string) => {
 
   export const FetchImages = async () => {
     const images:any[] = []
-    const data = await getImages()
+    const data = await getArticles()
+    
     if (data)
-        data.forEach((image:any)=> images.push(image.imageURL) )
-    return images
+        data.forEach((article:any)=> 
+            article.article.map((item:any )=> 
+            {if( item.mainImage ) images.push(item.mainImage)}))
+            
+            return images
 }

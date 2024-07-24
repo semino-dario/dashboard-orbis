@@ -6,7 +6,7 @@ export default async function EditArticle({params}: {params: {id: number, idbd:s
   
   const idBd = JSON.stringify(params.idbd)
   const article = await FetchOneArticle(idBd)
-  
+    
   return (
     <main className={styles.main}>
         <div className="">

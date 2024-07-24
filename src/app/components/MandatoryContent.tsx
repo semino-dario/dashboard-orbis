@@ -4,16 +4,15 @@ import Title from "./article-elements/Title"
 import ImageLoader from "./ImageLoader"
 
 interface MandatoryContentProps{
-    mainTitleContent: string
+    mainTitleContent?: string
     setMainTitleContent: React.Dispatch<React.SetStateAction<string>>
-    mainImageContent: string
-    setMainImageContent: React.Dispatch<React.SetStateAction<string>>
+    mainImageContent?: string
+    setMainImageContent?: React.Dispatch<React.SetStateAction<string>>
     descriptionContent: string
     setDescriptionContent: React.Dispatch<React.SetStateAction<string>>
-    // images: any[]
-}
+  }
 
-const MandatoryContent:React.FC<MandatoryContentProps> = ({mainTitleContent, setMainTitleContent, mainImageContent, setMainImageContent, descriptionContent, setDescriptionContent}) => {
+const MandatoryContent:React.FC<MandatoryContentProps> = ({mainTitleContent="", mainImageContent, setMainImageContent, setMainTitleContent, descriptionContent, setDescriptionContent}) => {
   
   return (
         <div className={styles.containerMandatoryContent}>
@@ -29,13 +28,7 @@ const MandatoryContent:React.FC<MandatoryContentProps> = ({mainTitleContent, set
       <div>
       <h3>Main image</h3>
       <ImageLoader
-      //  images={images}
             />
-      {/* <Image
-      imageContent={mainImageContent}
-      onChange={(value) => setMainImageContent(value)}
-      mainImage={true}
-      /> */}
       </div>
       <div>
         <h3>Description</h3>

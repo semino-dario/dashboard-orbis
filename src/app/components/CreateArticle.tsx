@@ -1,11 +1,14 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../page.module.css";
 import ButtonsCreateArticle from "./buttons/ButtonsDynamicContent";
 import MandatoryContent from "./MandatoryContent";
 import DynamicContent from "./DynamicContent";
 import ButtonsPublishPreview from "./buttons/ButtonsPublishPreview";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { writeImageUrl } from "../store/slice";
 
 interface CreateArticleProps{
   mainTitle: string
@@ -16,13 +19,20 @@ interface CreateArticleProps{
   images?: any[]
 }
 
+
+
 const CreateArticle:React.FC<CreateArticleProps> = ({mainTitle, mainImage, description, dynamicContent, idDb, images})=> {
 const [blockStates, setBlockStates] = useState<any[]>(dynamicContent);
 const [mainTitleContent, setMainTitleContent] = useState(mainTitle)
-const [mainImageContent, setMainImageContent] = useState(mainImage)
+const image = useSelector((state:RootState)=> state.data.imageUrl )
+const [mainImageContent, setMainImageContent] = useState(image)
 const [descriptionContent, setDescriptionContent] = useState(description)
 const article = {} 
 const articlePreview = {}
+const dispatch = useDispatch()
+
+console.log(image)
+
 
   return(
     <div className={styles.containerCreateArticle}>     
@@ -36,8 +46,8 @@ const articlePreview = {}
           setMainImageContent={setMainImageContent}
           descriptionContent={descriptionContent}
           setDescriptionContent={setDescriptionContent}
-          // images={images}
         />
+        {/* <input type="text" value={image} onChange={(e)=> {dispatch(writeImageUrl(e.target.value)), console.log(image)} } /> */}
        <br /> 
        <h2>Dynamic Content</h2>
        <hr /> <br />
@@ -51,7 +61,7 @@ const articlePreview = {}
           <ButtonsPublishPreview
             blockStates={blockStates}
             mainTitleContent={mainTitleContent}
-            mainImageContent={mainImageContent}
+             mainImageContent={image}
             descriptionContent={descriptionContent}
             article={article}
             articlePreview={articlePreview}

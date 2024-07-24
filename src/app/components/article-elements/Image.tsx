@@ -10,8 +10,6 @@ interface ImageProps {
   }
 
   const Image: React.FC<ImageProps> = ({ imageContent, onChange, onDelete, mainImage, displayGallery }) => {
-    
-    
     return(
         <div className={`${styles.imageBox} ${mainImage === false && styles.marginArticleElements}`}>
         {(!imageContent && mainImage === true) ?

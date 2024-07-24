@@ -5,6 +5,7 @@ import {  postApi, putApi } from "../../api/ConnectApi"
 import { useEffect, useState } from "react"
 import Alert from "../Alert"
 
+
 interface ButtonsPublishPreviewProps {
     blockStates: any[]
     article: any
@@ -32,23 +33,23 @@ const ButtonsPublishPreview:React.FC<ButtonsPublishPreviewProps> = ({blockStates
     return article}
     
    const publishArticle = () => {
-      if (hrefArticle !== ''){
-        setAlert(true) }
+      if (hrefArticle === '')
+        { setAlert(true) }
       else {
         createArticle()
-        
         postApi(article)
       }
         }
-    
+ 
+        
       const editArticle = () => {
-        if (hrefArticle !== ''){
+        if (hrefArticle === ''){
           setAlert(true)
-         }
+       }
          else {
-        createArticle()
-        putApi( idDb, article)
-             }
+           createArticle()
+            putApi( idDb, article)
+        }
       }
 
       const preview = () => {
