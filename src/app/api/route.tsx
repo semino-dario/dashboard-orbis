@@ -28,7 +28,7 @@ export async function GET() {
     }
 }
 
-export function isValidObjectId(id: string) {
+ function isValidObjectId(id: string) {
     return ObjectId.isValid(id) && String(new ObjectId(id)) === id;
 }
 
