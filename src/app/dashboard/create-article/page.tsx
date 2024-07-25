@@ -1,9 +1,9 @@
+"use client"
 
 import styles from "../../page.module.css";
 import CreateArticle from "../../components/CreateArticle";
 
-
-export default async function NewArticle() {
+export default function NewArticle() {
 
   return (
     <main className={styles.variables}>
