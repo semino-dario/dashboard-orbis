@@ -1,3 +1,5 @@
+"use client"
+
 import Divider from "./article-elements/Divider";
 import Image from "./article-elements/Image";
 import styles from "../page.module.css"

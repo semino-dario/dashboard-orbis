@@ -22,10 +22,6 @@ const ButtonsDynamicContent:React.FC<ButtonsDynamicContentProps> = ({blockStates
       }
   };
 
-    // const scrollToBottom = () => {
-    //     animateScroll.scrollToBottom();
-    //   };
-
       const addElement = ( e:React.FormEvent, elementContent:string) =>{
         e.preventDefault()
         const newElement = {[elementContent]: "" }

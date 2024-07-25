@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "../page.module.css"
 import Description from "./article-elements/Description"
 import Title from "./article-elements/Title"
