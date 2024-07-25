@@ -1,10 +1,11 @@
-const API_URL = process.env.API_URL
+
+const api = process.env.NEXT_PUBLIC_API_URL || ""
 
 export async function postApi (data:any[]) {
 
     try{
 
-        const resp = await fetch(`http://localhost:3000/api/`,
+        const resp = await fetch(api,
             {method: 'POST',
             headers: {
                 "Content-Type": "application/json", 
@@ -26,8 +27,7 @@ export async function postApi (data:any[]) {
 export async function putApi (idArticle:string, data:any) {
 
     try{
-        // const id = idArticle.replace(/^"|"$/g, '')
-        const resp = await fetch(`http://localhost:3000/api/article/${idArticle}`,
+        const resp = await fetch(`${api}article/${idArticle}`,
         {method: 'PUT',
         cache: 'no-store', 
         headers: {
@@ -52,7 +52,7 @@ export async function putApi (idArticle:string, data:any) {
 export async function deleteApi (id:string) {
 
     try {
-        const resp = await fetch('http://localhost:3000/api/',
+        const resp = await fetch(api,
         {
             method: 'DELETE',
             headers: {
@@ -76,51 +76,26 @@ export async function deleteApi (id:string) {
     export const getArticles = async () => {
 
         try{
-    
-            const resp = await fetch('http://localhost:3000/api/', {
+   
+            const resp = await fetch( api, {
                 method: "GET",
                 cache: "no-store"
             })
-            const data = resp.json()
-
+            const data = await resp.json()
+        
             return data
+
         }
     
         catch (error)
         {
-            console.log(`Error GET IMAGES: ${error}` )
+            console.log(`Error GET ARTICLES: ${error}` )
         }
     }
 
-// export const postImage = async (data:any) => {
-
-//     try{
-
-//         const resp = await fetch(`https://658b02c3ba789a9622384d5a.mockapi.io/images`, {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(data)
-//         })
-
-//         const imageLoaded = await resp.json()
-//         if (imageLoaded)
-//         return {success:true, message: "Image loaded correctly"}
-//     }
-
-//     catch (error) {
-//         console.log( `ERROR IMAGE POST: ${error}` )
-//         return {success: false, message: "Error! Image not loaded. try again"}
-//     }
-
-
-// }
-
-
 export const FetchArticleByID = async (idBd:string) => {
     try {
-      const resp = fetch(`http://localhost:3000/api/article/${idBd}`, {
+      const resp = fetch(`${api}article/${idBd}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

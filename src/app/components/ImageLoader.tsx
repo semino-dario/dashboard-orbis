@@ -1,6 +1,6 @@
 "use client"
 import {  useEffect, useState } from "react";
-import { FetchImages } from "../api/ConnectApi";
+import { FetchImages } from "../lib/ConnectApi";
 import styles from '../page.module.css'
 import { CldUploadButton } from 'next-cloudinary';
 import { CldImage } from 'next-cloudinary';

@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import styles from "../../page.module.css"
-import {  postApi, putApi } from "../../api/ConnectApi"
+import {  postApi, putApi } from "../../lib/ConnectApi"
 import { useEffect, useState } from "react"
 import Alert from "../Alert"
 
