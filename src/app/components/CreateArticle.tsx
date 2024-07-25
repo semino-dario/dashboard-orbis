@@ -43,7 +43,6 @@ console.log(image)
           descriptionContent={descriptionContent}
           setDescriptionContent={setDescriptionContent}
         />
-        {/* <input type="text" value={image} onChange={(e)=> {dispatch(writeImageUrl(e.target.value)), console.log(image)} } /> */}
        <br /> 
        <h2>Dynamic Content</h2>
        <hr /> <br />
