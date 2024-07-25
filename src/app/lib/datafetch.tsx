@@ -1,4 +1,6 @@
 import { GET } from "../api/article/[id]/route"
+import { NextRequest, NextResponse } from 'next/server';
+
 
 const setArticleContent = async (oneArticle:any) => {
     const dynamicContent:any[] = []
@@ -14,8 +16,11 @@ const setArticleContent = async (oneArticle:any) => {
 
 export const FetchOneArticle = async (idBd:string) => {
 
+  const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}articles/${idBd}`); 
+  const request = new NextRequest(url.toString());
+
     try{
-        const response:any = await GET(idBd) 
+        const response:any = await GET(request) 
         const oneArticle:any = await response.json()
         const article = setArticleContent(oneArticle)
     

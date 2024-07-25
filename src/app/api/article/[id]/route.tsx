@@ -39,21 +39,27 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
 //Get by ID
 
-export async function GET( id:string ) {
+export async function GET( id:NextRequest | Request ) {
     try {
 
         if (!id) {
             return NextResponse.json({ error: 'the ID is required' }, { status: 400 });
         }
-   
-        id = id.replace(/^"|"$/g, '');
+        
+        const stringId = id.url.replace(`${process.env.NEXT_PUBLIC_API_URL}articles/%22`, '').replace('%22', '')
 
-        if (!isValidObjectId(id)) {
+        console.log("ACÁ ESTÁ EL ID: ", stringId)
+
+
+
+        stringId.replace(/^"|"$/g, '');
+
+        if (!isValidObjectId(stringId)) {
             return NextResponse.json({ error: 'ID must be a valid ObjectId' }, { status: 400 });
         }
 
         const { collection } = await connectToDatabase();
-        const article = await collection.findOne({ _id: new ObjectId(id) });
+        const article = await collection.findOne({ _id: new ObjectId(stringId) });
 
         if (!article) {
             return NextResponse.json({ error: 'Article not found' }, { status: 404 });
