@@ -1,4 +1,4 @@
-import { GET_BY_ID } from "../api/route"
+import { GET } from "../api/article/[id]/route"
 
 const setArticleContent = async (oneArticle:any) => {
     const dynamicContent:any[] = []
@@ -15,7 +15,7 @@ const setArticleContent = async (oneArticle:any) => {
 export const FetchOneArticle = async (idBd:string) => {
 
     try{
-        const response:any = await GET_BY_ID(idBd) 
+        const response:any = await GET(idBd) 
         const oneArticle:any = await response.json()
         const article = setArticleContent(oneArticle)
     
