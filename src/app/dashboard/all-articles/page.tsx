@@ -14,7 +14,6 @@ let data
      console.log("Error IN Get all articles: ", error)
    }
    
-   console.log("AQUÍ LA DATA: ", data)
    
   return (
     <main className={styles.main}>
@@ -22,7 +21,14 @@ let data
                <AllArticles
                data={data}
                /> 
-               
+               {
+                data &&
+                data.map((article:any, index:number) =>
+                <div>
+                  <p>{article._id}</p>
+                  
+                </div>)
+               }
         </div>
  </main>
   );
