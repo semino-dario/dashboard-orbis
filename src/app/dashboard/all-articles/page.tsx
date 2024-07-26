@@ -24,7 +24,7 @@ let data
                {
                 data &&
                 data.map((article:any, index:number) =>
-                <div>
+                <div key={index}>
                   <p>{article._id}</p>
                   
                 </div>)
