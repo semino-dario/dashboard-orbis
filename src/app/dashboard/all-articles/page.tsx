@@ -14,6 +14,7 @@ let data
      console.log("Error IN Get all articles: ", error)
    }
    
+   console.log("AQUÍ LA DATA: ", data)
    
   return (
     <main className={styles.main}>
