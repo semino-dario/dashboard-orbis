@@ -27,7 +27,6 @@ const AllArticles:React.FC<AllArticlesProps> = ({data}) => {
                 articleImage={articleData.article[1].mainImage}
                 articleDescription={articleData.article[2].description}
                 />
-                <p>all arts: {articleData._id}</p>
                 </div>))
             :
             <div>

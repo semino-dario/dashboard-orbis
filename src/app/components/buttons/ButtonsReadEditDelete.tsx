@@ -26,13 +26,18 @@ const ButtonsReadEditDelete:React.FC<ButtonsReadEditDeleteProps> = ({id, title, 
        }
     }
 
+    const cleanedIdDb = idDb.replace(/^"|"$/g, '') 
+    const cleanedTitle = title.replace(/^"|"$/g, '') 
+
+    console.log(cleanedIdDb, typeof(cleanedIdDb))
+
+    
     return (
         <div className={`${styles.articleContent} ${styles.containerButtonsContent}`}>
-            <Link href={`/dashboard/article/${idDb}/${title}`} >
+            <Link href={`/dashboard/article/${cleanedIdDb}/${cleanedTitle}`} >
             <button className={styles.buttonContent}>read</button>
-            <p>button: {idDb}</p>
             </Link>
-            <Link href={`/dashboard/edit-article/${id}/${idDb}`}>
+            <Link href={`/dashboard/edit-article/${id}/${cleanedIdDb}`}>
             <button className={styles.buttonContent}>edit</button>
             </Link>
             <button className={styles.buttonContent} onClick={()=>setAlert(true)} >delete</button>
