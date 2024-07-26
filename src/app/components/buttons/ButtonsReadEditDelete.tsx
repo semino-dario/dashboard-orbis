@@ -30,6 +30,7 @@ const ButtonsReadEditDelete:React.FC<ButtonsReadEditDeleteProps> = ({id, title, 
         <div className={`${styles.articleContent} ${styles.containerButtonsContent}`}>
             <Link href={`/dashboard/article/${idDb}/${title}`} >
             <button className={styles.buttonContent}>read</button>
+            <p>button: {idDb}</p>
             </Link>
             <Link href={`/dashboard/edit-article/${id}/${idDb}`}>
             <button className={styles.buttonContent}>edit</button>

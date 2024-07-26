@@ -21,14 +21,6 @@ let data
                <AllArticles
                data={data}
                /> 
-               {
-                data &&
-                data.map((article:any, index:number) =>
-                <div key={index}>
-                  <p>{article._id}</p>
-                  
-                </div>)
-               }
         </div>
  </main>
   );
