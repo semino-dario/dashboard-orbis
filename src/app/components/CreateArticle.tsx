@@ -27,9 +27,6 @@ const [descriptionContent, setDescriptionContent] = useState(description)
 const article = {} 
 const articlePreview = {}
 
-console.log(image)
-
-
   return(
     <div className={styles.containerCreateArticle}>     
       <form className={styles.containerContent}>

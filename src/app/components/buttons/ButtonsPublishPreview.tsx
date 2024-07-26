@@ -4,6 +4,8 @@ import styles from "../../page.module.css"
 import {  postApi, putApi } from "../../lib/ConnectApi"
 import { useEffect, useState } from "react"
 import Alert from "../Alert"
+import { useDispatch } from "react-redux"
+import { createPreview } from "@/app/store/slice"
 
 
 interface ButtonsPublishPreviewProps {
@@ -21,6 +23,7 @@ const ButtonsPublishPreview:React.FC<ButtonsPublishPreviewProps> = ({blockStates
   const [target, setTarget] = useState("")
   const [hrefPreview, setHrefPreview ] = useState("")
   const [hrefArticle, setHrefArticle ] = useState("")
+  const dispatch = useDispatch()
 
   const createArticle =  () => {
     const mainTitle = {mainTitle: mainTitleContent}
@@ -65,8 +68,13 @@ const ButtonsPublishPreview:React.FC<ButtonsPublishPreviewProps> = ({blockStates
         blockStatesPreview.unshift(mainTitle, mainImage, description )
         articlePreview.article =  blockStatesPreview
         localStorage.clear()
-        localStorage.setItem("article", JSON.stringify(articlePreview))}
+        localStorage.setItem("article", JSON.stringify(articlePreview))
+
+      
       }
+      }
+
+
       useEffect(() => {
         if (mainTitleContent && mainImageContent && descriptionContent) {
            setHrefPreview('/dashboard/preview')

@@ -1,7 +1,10 @@
 "use client"
 
 import styles from "../../page.module.css";
-import CreateArticle from "../../components/CreateArticle";
+import dynamic from "next/dynamic"
+
+const CreateArticle = dynamic(() => import("../../components/CreateArticle"), {ssr: false}
+)
 
 export default function NewArticle() {
 
