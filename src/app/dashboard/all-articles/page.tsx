@@ -2,6 +2,7 @@ import styles from "../../page.module.css";
 import AllArticles from "../../components/AllArticles";
 import { GET } from "@/app/api/route";
 
+
 export default  async function Articles (){
 
 let data

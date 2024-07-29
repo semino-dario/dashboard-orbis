@@ -9,7 +9,10 @@ export async function POST(req: NextRequest) {
         const { collection } = await connectToDatabase();
         const result = await collection.insertMany(Array.isArray(data) ? data : [data]);
 
-        return NextResponse.json(result, { status: 200 });
+        const response = NextResponse.json(result, { status: 200 });
+        response.headers.set('Cache-Control', 'no-store');
+        return response
+
     } catch (error) {
         console.error('Error posting article:', error);
         return NextResponse.json({ error: 'Failed to post article' }, { status: 500 });
