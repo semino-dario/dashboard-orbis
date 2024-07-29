@@ -5,6 +5,7 @@ import { FetchOneArticle } from "@/app/lib/datafetch";
 export default async function EditArticle({params}: {params: {id: number, idbd:string}}) {
   
   const idBd = JSON.stringify(params.idbd)
+  
   const article = await FetchOneArticle(idBd)
     
   return (
