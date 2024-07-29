@@ -21,7 +21,10 @@ export async function GET() {
         const { collection } = await connectToDatabase();
         const articles = await collection.find().toArray();
 
-        return NextResponse.json(articles, { status: 200 });
+        const response = NextResponse.json(articles, { status: 200 });
+        response.headers.set('Cache-Control', 'no-store');
+
+        return response
     } catch (error) {
         console.error('Error fetching articles:', error);
         return NextResponse.json({ error: 'Failed to fetch articles' }, { status: 500 });
