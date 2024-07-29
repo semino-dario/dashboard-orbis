@@ -16,8 +16,7 @@ const setArticleContent = async (oneArticle:any) => {
 
 export const FetchOneArticle = async (idBd:string) => {
 
-  const cleanedIdBd = idBd.replace(/^"|"$/g, '');
-  const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}article/${cleanedIdBd}`); 
+  const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}article/${idBd}`); 
   const request = new NextRequest(url);
 
     try{
