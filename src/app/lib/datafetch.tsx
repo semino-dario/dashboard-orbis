@@ -17,7 +17,7 @@ const setArticleContent = async (oneArticle:any) => {
 export const FetchOneArticle = async (idBd:string) => {
 
   const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}articles/${idBd}`); 
-  const request = new NextRequest(url.toString());
+  const request = new NextRequest(url);
 
     try{
         const response:any = await GET(request) 
