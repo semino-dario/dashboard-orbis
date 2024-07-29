@@ -46,10 +46,7 @@ export async function GET( id:NextRequest | Request ) {
             return NextResponse.json({ error: 'the ID is required' }, { status: 400 });
         }
         
-        const stringId = id.url.replace(`${process.env.NEXT_PUBLIC_API_URL}articles/%22`, '').replace('%22', '')
-
-        console.log("ACÁ ESTÁ EL ID: ", stringId)
-
+        const stringId = id.url.replace(`${process.env.NEXT_PUBLIC_API_URL}article/%22`, '').replace('%22', '')
 
 
         stringId.replace(/^"|"$/g, '');
