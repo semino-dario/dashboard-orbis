@@ -5,16 +5,22 @@ import styles from '../page.module.css'
 import { CldUploadButton } from 'next-cloudinary';
 import { CldImage } from 'next-cloudinary';
 import { useDispatch} from "react-redux";
-import { writeImageUrl } from "../store/slice";
 
-const ImageLoader = () => {
-    const [imageURL, setImageURL] = useState("")
+interface ImageLoaderProps{
+    imageContent: string
+    onDelete?: (e:any) => void;
+    onChange: ((value:any) => void);
+
+}
+
+const ImageLoader:React.FC<ImageLoaderProps> = ({imageContent="", onDelete, onChange}) => {
+    const [imageURL, setImageURL] = useState(imageContent)
     const [showGallery, setShowGallery] = useState(false)
     const [images, setImages] = useState<any>([])
     const dispatch = useDispatch()
     const [imageConfirmation, setImageConfirmation] = useState(false)
-
-        useEffect( ()=> {
+    
+    useEffect( ()=> {
             const getData = async () => {
                 const data = await FetchImages()
                 if (data)
@@ -22,6 +28,12 @@ const ImageLoader = () => {
             }
             getData()
         }, [])
+
+        useEffect(() => {
+            if (imageURL !== imageContent) {
+                onChange(imageURL);
+            }
+        }, [imageURL]);
     
         const handleUploadSuccess = (result:any) => {
             const newImage = result.info.secure_url
@@ -30,7 +42,6 @@ const ImageLoader = () => {
       
         const confirmImage = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault(), 
-            dispatch(writeImageUrl(imageURL))
             setImageConfirmation(true)
             setShowGallery(false)
         }
@@ -40,7 +51,7 @@ const ImageLoader = () => {
             setImageURL("")
             setImageConfirmation(false)
         }
-
+    
     return(
             <div className={styles.imageLoader}>
                 { imageURL &&
@@ -57,6 +68,8 @@ const ImageLoader = () => {
                         />
                         { !imageConfirmation &&
                          <button className={`${styles.confirmImage} ${styles.imageButton}`} onClick={e => confirmImage(e)}>confirm image</button>}
+                               <input value={imageURL} onChange={(e) => { setImageURL(e.target.value); onChange(e.target.value)}  }/>
+
                 </div>}
                 {
                     !imageConfirmation &&
@@ -66,9 +79,7 @@ const ImageLoader = () => {
                         uploadPreset="hom8bohk"
                         onSuccess={handleUploadSuccess}
                         />
-                    <button onClick={(e)=>{e.preventDefault(), setShowGallery      (!showGallery)}} className={`${styles.inputImage} ${styles.imageButton}`}>{!showGallery ? "Search in Gallery" : "Close Gallery"}</button>
-                
-                   
+                    <button onClick={(e)=>{e.preventDefault(), setShowGallery (!showGallery)}} className={`${styles.inputImage} ${styles.imageButton}`}>{!showGallery ? "Search in Gallery" : "Close Gallery"}</button>       
                 </div>}
                     {
                         showGallery ?

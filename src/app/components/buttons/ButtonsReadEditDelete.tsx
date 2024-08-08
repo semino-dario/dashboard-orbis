@@ -29,8 +29,6 @@ const ButtonsReadEditDelete:React.FC<ButtonsReadEditDeleteProps> = ({id, title, 
     const cleanedIdDb = idDb.replace(/^"|"$/g, '') 
     const cleanedTitle = title.replace(/^"|"$/g, '') 
 
-    console.log(cleanedIdDb, typeof(cleanedIdDb))
-
     
     return (
         <div className={`${styles.articleContent} ${styles.containerButtonsContent}`}>

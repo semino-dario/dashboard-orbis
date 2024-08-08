@@ -15,14 +15,12 @@ interface CreateArticleProps{
   description: string
   idDb: string
   dynamicContent: any[]
-  images?: any[]
 }
 
-const CreateArticle:React.FC<CreateArticleProps> = ({mainTitle, mainImage, description, dynamicContent, idDb, images})=> {
+const CreateArticle:React.FC<CreateArticleProps> = ({mainTitle, mainImage, description, dynamicContent, idDb})=> {
 const [blockStates, setBlockStates] = useState<any[]>(dynamicContent);
 const [mainTitleContent, setMainTitleContent] = useState(mainTitle)
-const image = useSelector((state:RootState)=> state.data.imageUrl )
-const [mainImageContent, setMainImageContent] = useState(image)
+const [mainImageContent, setMainImageContent] = useState(mainImage)
 const [descriptionContent, setDescriptionContent] = useState(description)
 const article = {} 
 const articlePreview = {}
@@ -51,9 +49,8 @@ const articlePreview = {}
 
 <div className={styles.containerButtons}>
           <ButtonsPublishPreview
-            blockStates={blockStates}
             mainTitleContent={mainTitleContent}
-             mainImageContent={image}
+             mainImageContent={mainImageContent}
             descriptionContent={descriptionContent}
             article={article}
             articlePreview={articlePreview}

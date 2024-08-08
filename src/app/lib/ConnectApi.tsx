@@ -121,8 +121,10 @@ export const FetchArticleByID = async (idBd:string) => {
     
     if (data)
         data.forEach((article:any)=> 
-            article.article.map((item:any )=> 
-            {if( item.mainImage ) images.push(item.mainImage)}))
+            article.article.map((item:any ) => 
+            {if( item.mainImage) images.push(item.mainImage)
+            if (item.imageContent) images.push(item.imageContent)    
+            }))
             
             return images
 }

@@ -4,12 +4,13 @@ import styles from "../../page.module.css"
 import {  postApi, putApi } from "../../lib/ConnectApi"
 import { useEffect, useState } from "react"
 import Alert from "../Alert"
-import { useDispatch } from "react-redux"
-import { createPreview } from "@/app/store/slice"
+import { useDispatch, useSelector } from "react-redux"
+import { createPreview} from "@/app/store/slice"
+import { RootState } from "@/app/store/store"
 
 
 interface ButtonsPublishPreviewProps {
-    blockStates: any[]
+   // blockStates: any[]
     article: any
     mainTitleContent: string
     mainImageContent: string
@@ -18,21 +19,22 @@ interface ButtonsPublishPreviewProps {
     idDb:string
 }
 
-const ButtonsPublishPreview:React.FC<ButtonsPublishPreviewProps> = ({blockStates, article, mainTitleContent, mainImageContent, descriptionContent, articlePreview, idDb}) => {
+const ButtonsPublishPreview:React.FC<ButtonsPublishPreviewProps> = ({article, mainTitleContent, mainImageContent, descriptionContent, articlePreview, idDb}) => {
   const [alert, setAlert] = useState(false)
   const [target, setTarget] = useState("")
   const [hrefPreview, setHrefPreview ] = useState("")
   const [hrefArticle, setHrefArticle ] = useState("")
   const dispatch = useDispatch()
-
+  const dynamicContent = useSelector((state:RootState)=> state.data.dynamicContent)  
   const createArticle =  () => {
     const mainTitle = {mainTitle: mainTitleContent}
     const mainImage = {mainImage: mainImageContent}
     const description = {description: descriptionContent}
-    
-    blockStates.unshift(mainTitle, mainImage, description )
+    const mandatoryContent = [mainTitle, mainImage, description]
+
+  const  blockStates = [...mandatoryContent, ...dynamicContent]
      article.article = blockStates
-    
+
     return article}
     
    const publishArticle = () => {
@@ -52,6 +54,7 @@ const ButtonsPublishPreview:React.FC<ButtonsPublishPreviewProps> = ({blockStates
          else {
            createArticle()
             putApi( idDb, article)
+
         }
       }
 
@@ -64,8 +67,8 @@ const ButtonsPublishPreview:React.FC<ButtonsPublishPreviewProps> = ({blockStates
        }
        else{
 
-        let blockStatesPreview = [...blockStates]
-        blockStatesPreview.unshift(mainTitle, mainImage, description )
+        let blockStatesPreview = ["...blockStates"]
+       // blockStatesPreview.unshift(mainTitle, mainImage, description )
         articlePreview.article =  blockStatesPreview
         localStorage.clear()
         localStorage.setItem("article", JSON.stringify(articlePreview))

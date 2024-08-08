@@ -1,21 +1,33 @@
 "use client"
 
+import { useEffect } from "react"
 import styles from "../page.module.css"
 import Description from "./article-elements/Description"
 import Title from "./article-elements/Title"
 import ImageLoader from "./ImageLoader"
+import { useDispatch } from "react-redux"
+//import { setMandatoryContent } from "../store/slice"
 
 interface MandatoryContentProps{
     mainTitleContent?: string
     setMainTitleContent: React.Dispatch<React.SetStateAction<string>>
-    mainImageContent?: string
-    setMainImageContent?: React.Dispatch<React.SetStateAction<string>>
+    mainImageContent: string
+    setMainImageContent: React.Dispatch<React.SetStateAction<string>>
     descriptionContent: string
     setDescriptionContent: React.Dispatch<React.SetStateAction<string>>
   }
 
+
 const MandatoryContent:React.FC<MandatoryContentProps> = ({mainTitleContent="", mainImageContent, setMainImageContent, setMainTitleContent, descriptionContent, setDescriptionContent}) => {
   
+  //const dispatch = useDispatch()
+
+
+  // useEffect(()=>{
+  // dispatch(setMandatoryContent([{mainTitle: mainTitleContent},{mainImage: mainImageContent}, {description: descriptionContent}]))
+  // }, [dispatch, mainImageContent, mainImageContent, descriptionContent])
+  
+
   return (
         <div className={styles.containerMandatoryContent}>
         <div>
@@ -23,13 +35,15 @@ const MandatoryContent:React.FC<MandatoryContentProps> = ({mainTitleContent="", 
       <Title
             subTitle={false}
              titleContent={mainTitleContent}
-             onChange={(value) => setMainTitleContent(value)}
+             onChange={(value) => {setMainTitleContent(value)}}
              maxCharacters={70}
              />
              </div>
       <div>
       <h3>Main image</h3>
       <ImageLoader
+      imageContent={mainImageContent}
+      onChange={(value:string ) => {setMainImageContent(value)}}
             />
       </div>
       <div>

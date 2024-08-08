@@ -1,5 +1,5 @@
 import { GET } from "../api/article/[id]/route"
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 
 const setArticleContent = async (oneArticle:any) => {

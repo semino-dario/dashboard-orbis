@@ -1,10 +1,14 @@
 "use client"
 
 import Divider from "./article-elements/Divider";
-import Image from "./article-elements/Image";
 import styles from "../page.module.css"
 import Editor from "./article-elements/Editor";
 import Title from "./article-elements/Title";
+import ImageLoader from "./ImageLoader";
+import { RootState } from "../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import {  setDynamicContent } from "../store/slice";
+import { useEffect, useState } from "react";
 
 interface DynamicContentProps {
     blockStates: any[]
@@ -12,14 +16,18 @@ interface DynamicContentProps {
 }
 
 const DynamicContent:React.FC<DynamicContentProps> = ({blockStates, setBlockStates}) => {
+const dispatch = useDispatch()
+const [imageIndex, setImageIndex] = useState(0)
 
 const eliminateBlock = (e:React.FormEvent,index: number) => {
   e.preventDefault()  
   const updatedBlockStates = blockStates.filter((_, i) => i !== index);
-    setBlockStates(updatedBlockStates);
+  setBlockStates(updatedBlockStates);
   };
 
-   const handleChangeBlock = (index: number, newState:any[]) => {
+
+
+const handleChangeBlock = (index: number, newState:any[]) => {
     const updatedBlockStates = [...blockStates];
     updatedBlockStates[index] = newState;
     setBlockStates(updatedBlockStates);
@@ -39,13 +47,21 @@ const eliminateBlock = (e:React.FormEvent,index: number) => {
     }
   };
 
+  useEffect(() => {
+
+    dispatch(setDynamicContent(blockStates))
+
+  }, [blockStates, dispatch]);
+
+
   return (
     <div className={styles.containerMandatoryContent}>
       {blockStates.map( (blockState, index) => (
-        <div key={index}>   
+        <div key={blockState.id}>   
           {
            blockState.titleContent !== undefined ? (
               <Title
+              key={`subtitle-${blockState.id}`}
                 subTitle={true}
                 titleContent={blockState.titleContent}
                 onChange={(value:string) => handleChangeBlock(index, { ...blockState, titleContent: value })}
@@ -55,28 +71,30 @@ const eliminateBlock = (e:React.FormEvent,index: number) => {
             )
             :
             blockState.imageContent !== undefined ? (
-              <Image
-              imageContent={blockState.imageContent}
-              onChange={(value) => handleChangeBlock(index, { ...blockState, imageContent: value})}
-              onDelete={(e:any) => eliminateBlock(e, index)}
-              mainImage={false}
-              />
-            )
+             <ImageLoader
+              key={`image-loader-${blockState.id}`}
+               imageContent={blockState.imageContent}
+               onDelete={(e:any) => {eliminateBlock(e, index)}}
+               onChange={(value:string) => handleChangeBlock(index, { ...blockState, imageContent: value })}
+             />
+              )
             :
             blockState.textContent !== undefined ? (
               <Editor
+              key={`editor-${blockState.id}`}
               textContent={blockState.textContent}
               onChange={(value) => handleChangeBlock(index, { ...blockState, textContent: value })}
               onDelete={(e:any) => eliminateBlock(e, index)}
               />
             )
             :
-            <Divider /> 
-            }
-
-            <div className={styles.containerBlockButtons}>
-          <button className={styles.blockButton} onClick={(e:any) => {eliminateBlock(e, index)}}>🗑</button>
-          {blockStates.length === 1 && index === 0 ?
+            <Divider
+            key={`divider-${blockState.id}`}
+            /> 
+             }
+              <div className={styles.containerBlockButtons}>
+              <button className={styles.blockButton} onClick={(e:any) => {eliminateBlock(e, index)}}>🗑</button>
+           {blockStates.length === 1 && index === 0 ?
           <></>
           :
           blockStates.length > 1 && index === 0 ?
@@ -94,9 +112,7 @@ const eliminateBlock = (e:React.FormEvent,index: number) => {
         </div>
       ))
 }  </div> 
-
   )
-
 }
 
 export default DynamicContent
