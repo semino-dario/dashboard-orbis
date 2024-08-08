@@ -3,11 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface DataState {
   preview: string[];
   dynamicContent: any[]
- // mandatoryContent:any[]
 }
 
 const initialState: DataState = {
-  //mandatoryContent: [],
   dynamicContent: [],
   preview: []
 };
@@ -18,11 +16,6 @@ export const dataSlice = createSlice({
   initialState,
 
   reducers:{
-
-    // setMandatoryContent: (state, action:PayloadAction<any>) => {
-    //   state.mandatoryContent = action.payload
-    //   console.log(state.mandatoryContent)
-    // },
 
     setDynamicContent : (state, action:PayloadAction<any> ) => {
       state.dynamicContent = action.payload

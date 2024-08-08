@@ -6,8 +6,7 @@ import ButtonsCreateArticle from "./buttons/ButtonsDynamicContent";
 import MandatoryContent from "./MandatoryContent";
 import DynamicContent from "./DynamicContent";
 import ButtonsPublishPreview from "./buttons/ButtonsPublishPreview";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+
 
 interface CreateArticleProps{
   mainTitle: string

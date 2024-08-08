@@ -12,7 +12,7 @@ const Article: React.FC<ArticleProps>  = ({data}) =>  {
  useEffect( () => {
   const getData = async () => {
    const newData = await data 
-   console.log("SAFE DATA: ", newData)}
+   }
    getData() 
   }, [])
 

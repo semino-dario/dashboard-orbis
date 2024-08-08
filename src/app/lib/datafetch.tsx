@@ -2,7 +2,7 @@ import { GET } from "../api/article/[id]/route"
 import { NextRequest } from 'next/server';
 
 
-const setArticleContent = async (oneArticle:any) => {
+export const setArticleContent = async (oneArticle:any) => {
     const dynamicContent:any[] = []
     for (let i = 3; i<oneArticle.article.length; i++){
      

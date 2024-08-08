@@ -1,12 +1,9 @@
 "use client"
 
-import { useEffect } from "react"
 import styles from "../page.module.css"
 import Description from "./article-elements/Description"
 import Title from "./article-elements/Title"
 import ImageLoader from "./ImageLoader"
-import { useDispatch } from "react-redux"
-//import { setMandatoryContent } from "../store/slice"
 
 interface MandatoryContentProps{
     mainTitleContent?: string
@@ -19,13 +16,6 @@ interface MandatoryContentProps{
 
 
 const MandatoryContent:React.FC<MandatoryContentProps> = ({mainTitleContent="", mainImageContent, setMainImageContent, setMainTitleContent, descriptionContent, setDescriptionContent}) => {
-  
-  //const dispatch = useDispatch()
-
-
-  // useEffect(()=>{
-  // dispatch(setMandatoryContent([{mainTitle: mainTitleContent},{mainImage: mainImageContent}, {description: descriptionContent}]))
-  // }, [dispatch, mainImageContent, mainImageContent, descriptionContent])
   
 
   return (

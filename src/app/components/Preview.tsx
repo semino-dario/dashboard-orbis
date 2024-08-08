@@ -17,10 +17,19 @@ const dataString = localStorage.getItem('article')
     if (data){
     oneArticle = Object.values(data.article)}}
 
+    const dynamicContent:any[] = []
+    
+    for (let i = 3; i<oneArticle.length; i++){
+      dynamicContent.push(oneArticle[i])
+    }
+
+    const  article = { mainTitle: oneArticle[0].mainTitle, mainImage: oneArticle[1].mainImage, description: oneArticle[2].description, dynamicContent: dynamicContent }
+
+
     return (
     <div>{oneArticle ?
       <Article
-      data={oneArticle}
+      data={article}
       />
           :
         <h1>algo salió mal</h1>

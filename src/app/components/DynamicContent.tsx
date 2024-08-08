@@ -5,7 +5,6 @@ import styles from "../page.module.css"
 import Editor from "./article-elements/Editor";
 import Title from "./article-elements/Title";
 import ImageLoader from "./ImageLoader";
-import { RootState } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import {  setDynamicContent } from "../store/slice";
 import { useEffect, useState } from "react";
@@ -17,7 +16,6 @@ interface DynamicContentProps {
 
 const DynamicContent:React.FC<DynamicContentProps> = ({blockStates, setBlockStates}) => {
 const dispatch = useDispatch()
-const [imageIndex, setImageIndex] = useState(0)
 
 const eliminateBlock = (e:React.FormEvent,index: number) => {
   e.preventDefault()  
