@@ -10,7 +10,7 @@ export default function Home (){
 
   return (
     <div className={styles.main}>
-      <Link rel="stylesheet" href="/dashboard/all-articles" > <h1>Go to my dashboard</h1> </Link>
+      <Link rel="stylesheet" href="/login" > <h1>Login to your dashboard</h1> </Link>
  </div>
   );
 }

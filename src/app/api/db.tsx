@@ -1,9 +1,7 @@
 import { MongoClient, Db, Collection } from 'mongodb';
-
 const uri = process.env.DB_URI
 
-//@ts-ignore
-const client = new MongoClient(uri);
+const client = new MongoClient(uri!);
 
 export interface Database {
     client: MongoClient;

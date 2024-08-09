@@ -5,9 +5,10 @@ import styles from "../page.module.css"
 import Editor from "./article-elements/Editor";
 import Title from "./article-elements/Title";
 import ImageLoader from "./ImageLoader";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import {  setDynamicContent } from "../store/slice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import ButtonsBlock from "./buttons/ButtonsBlock";
 
 interface DynamicContentProps {
     blockStates: any[]
@@ -23,26 +24,11 @@ const eliminateBlock = (e:React.FormEvent,index: number) => {
   setBlockStates(updatedBlockStates);
   };
 
-
-
 const handleChangeBlock = (index: number, newState:any[]) => {
     const updatedBlockStates = [...blockStates];
     updatedBlockStates[index] = newState;
     setBlockStates(updatedBlockStates);
     localStorage.setItem('blockStates', JSON.stringify(updatedBlockStates));
-  };
-
-  const moveBlock = (e:React.FormEvent, currentIndex: number, direction: "up" | "down") => {
-    e.preventDefault()
-    const newIndex =
-      direction === "up" ? currentIndex - 1 : currentIndex + 1;
-    if (newIndex >= 0 && newIndex < blockStates.length) {
-      const updatedBlocks = [...blockStates];
-      const temp = updatedBlocks[currentIndex];
-      updatedBlocks[currentIndex] = updatedBlocks[newIndex];
-      updatedBlocks[newIndex] = temp;
-      setBlockStates(updatedBlocks);
-    }
   };
 
   useEffect(() => {
@@ -90,23 +76,12 @@ const handleChangeBlock = (index: number, newState:any[]) => {
             key={`divider-${blockState.id}`}
             /> 
              }
-              <div className={styles.containerBlockButtons}>
-              <button className={styles.blockButton} onClick={(e:any) => {eliminateBlock(e, index)}}>🗑</button>
-           {blockStates.length === 1 && index === 0 ?
-          <></>
-          :
-          blockStates.length > 1 && index === 0 ?
-            <button className={styles.blockButton}  onClick={(e:any) => moveBlock(e, index, "down")}>↓</button>
-            :
-          index === blockStates.length - 1
-          ?
-          <button className={styles.blockButton}  onClick={(e) => moveBlock(e, index, "up")}>↑</button>
-            :
-            <div className="flex flex-row gap-2">
-            <button className={styles.blockButton} onClick={(e) => moveBlock(e, index, "up")}>↑</button>
-            <button className={styles.blockButton}  onClick={(e) => moveBlock(e, index, "down")}>↓</button>
-            </div>}
-            </div>
+            <ButtonsBlock 
+              blockStates={blockStates}
+              setBlockStates={setBlockStates}
+              index={index}
+              eliminateBlock={eliminateBlock}
+            />
         </div>
       ))
 }  </div> 

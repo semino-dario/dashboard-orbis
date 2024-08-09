@@ -17,6 +17,8 @@ const dataString = localStorage.getItem('article')
     if (data){
     oneArticle = Object.values(data.article)}}
 
+
+    
     const dynamicContent:any[] = []
     
     for (let i = 3; i<oneArticle.length; i++){
