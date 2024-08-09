@@ -19,6 +19,7 @@ export async function connectToDatabase() {
     db = client.db('orbis');
     collection = db.collection<User>('user');
   }
+  return {client, db, collection}
 }
 
 export async function getUserByEmail(email: string): Promise<User | null> {

@@ -1,29 +1,14 @@
 import { NextResponse } from 'next/server';
-import { MongoClient, Collection, Db } from 'mongodb';
 import bcrypt from 'bcrypt';
-import { getUserByEmail } from '../../user';
+import { connectToDatabase, getUserByEmail } from '../../user';
 
 interface User {
     email: string;
     password: string;
   }
 
-  let client: MongoClient | null = null;
-  let db: Db | null = null;
-  let collection: Collection<User> | null = null;
-
-export async function connectToDatabase() {
-  if (!client) {
-    client = new MongoClient(process.env.DB_URI!);
-    await client.connect();
-    db = client.db('orbis');
-    collection = db.collection<User>('user');
-  }
-}
-
 export async function POST(req: Request) {
-  
-  await connectToDatabase();
+ const {collection } =   await connectToDatabase();
   
   if (!collection) {
     console.error('Collection is not initialized');
