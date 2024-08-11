@@ -1,5 +1,5 @@
 "use client"
-import styles from "../../page.module.css";
+import styles from "../../page.module.scss";
 import AllArticles from "../../components/AllArticles";
 import { useEffect, useState } from "react";
 import useAuth from "@/app/lib/hooks";

@@ -1,4 +1,4 @@
-import styles from '../page.module.css'
+import styles from '../page.module.scss'
 
 interface AlertDeleteProps {
     alertCall: boolean

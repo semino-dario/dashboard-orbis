@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import './editor.css'
-import styles from '../../page.module.css'
+import styles from '../../page.module.scss'
 
 
 interface EditorProps {

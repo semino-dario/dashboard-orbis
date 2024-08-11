@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link";
-import styles from "./page.module.css";
-import React, { useState } from 'react'
+import styles from "./page.module.scss";
+import React from 'react'
 
 export default function Home (){
 

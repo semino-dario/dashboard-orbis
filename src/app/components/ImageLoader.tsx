@@ -1,7 +1,7 @@
 "use client"
 import {  useEffect, useState } from "react";
 import { FetchImages } from "../lib/ConnectApi";
-import styles from '../page.module.css'
+import styles from '../page.module.scss'
 import { CldUploadButton } from 'next-cloudinary';
 import { CldImage } from 'next-cloudinary';
 import { useDispatch} from "react-redux";

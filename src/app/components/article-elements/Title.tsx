@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import styles from '../../page.module.css'
+import styles from '../../page.module.scss'
 
 interface TitleProps {
     titleContent: string;

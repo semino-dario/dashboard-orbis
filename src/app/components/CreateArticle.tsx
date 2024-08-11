@@ -1,7 +1,7 @@
 "use client"
 
 import {  useState } from "react";
-import styles from "../page.module.css";
+import styles from "../page.module.scss";
 import ButtonsCreateArticle from "./buttons/ButtonsDynamicContent";
 import MandatoryContent from "./MandatoryContent";
 import DynamicContent from "./DynamicContent";

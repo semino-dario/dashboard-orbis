@@ -1,4 +1,4 @@
-import styles from "../../../../page.module.css";
+import styles from "../../../../page.module.scss";
 import CreateArticle from "../../../../components/CreateArticle";
 import { FetchOneArticle } from "@/app/lib/datafetch";
 

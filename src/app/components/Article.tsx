@@ -1,7 +1,7 @@
 "use client"
 import Divider from "./article-elements/Divider"
-import React, { useEffect, useState } from 'react';
-import styles from '../page.module.css'
+import React, { useEffect } from 'react';
+import styles from '../page.module.scss'
 
 interface ArticleProps{
   data: any

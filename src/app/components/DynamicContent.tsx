@@ -1,7 +1,7 @@
 "use client"
 
 import Divider from "./article-elements/Divider";
-import styles from "../page.module.css"
+import styles from "../page.module.scss"
 import Editor from "./article-elements/Editor";
 import Title from "./article-elements/Title";
 import ImageLoader from "./ImageLoader";

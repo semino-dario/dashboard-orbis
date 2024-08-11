@@ -1,7 +1,7 @@
 "use client"
 
 import useAuth from "@/app/lib/hooks";
-import styles from "../../page.module.css";
+import styles from "../../page.module.scss";
 import dynamic from "next/dynamic"
 import AlertAuth from "@/app/components/AlertAuth";
 

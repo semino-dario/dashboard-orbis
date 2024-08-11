@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import styles from '../../page.module.css'
+import styles from '../../page.module.scss'
 import { animateScroll } from "react-scroll";
 import { useDispatch } from 'react-redux';
 

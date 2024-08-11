@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import styles from '../../page.module.css'
+import styles from '../../page.module.scss'
 import { deleteApi } from '@/app/lib/ConnectApi'
 import { useState } from 'react'
 import AlertDelete from '../AlertDelete'
