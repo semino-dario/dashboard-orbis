@@ -1,0 +1,19 @@
+@use './vars';
+@import './mixins';
+
+
+.shareIconsContainer{
+    @include articleText;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 3rem;
+    gap:0.5rem;
+    width: 100%;
+    
+}
+
+.shareIconsContainer img{
+    width: 2rem;
+    height: auto;
+}

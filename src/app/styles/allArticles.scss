@@ -1,0 +1,89 @@
+@use './vars';
+@import "./mixins";
+
+
+.allArticlesMainContainer{
+    @include mainContainer;
+    background: vars.$color-red;
+}
+
+.allArticlesHeader{
+    background: vars.$color-red;
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.allArticlesImage{
+    max-width: 80%;
+    height: auto;
+    
+}
+
+.allArticlesHeaderContent{
+    padding-inline: 1rem;
+}
+
+.allArticlesHeaderContent h1{
+    @include title;
+    color: vars.$color-white;
+}
+
+.allArticlesHeaderContent p{
+    @include text;
+    color: vars.$color-white;
+    border-bottom: 1px solid vars.$color-orange;
+    padding-bottom: 1rem;
+
+}
+
+.allArticlesMainContainer main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17.5rem, 19.75rem));
+    gap: 2rem;
+    width: 100%;
+    justify-content: center; 
+    align-content: center; 
+    margin-bottom: 5rem;
+}
+
+.footerAllArticles{
+    width: 100%;
+}
+
+@media (min-width: 380px){
+    .allArticlesMainContainer main{
+        padding-left: initial;
+
+    }
+}
+
+@media(min-width:600px){
+    .allArticlesImage{
+        max-width: 25rem;}
+    .allArticlesHeader{
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media(min-width: 1100px){
+    .allArticlesImage{
+        max-width: 30rem;
+    }
+
+    .allArticlesHeaderContent h1{
+        @include title;
+        color: vars.$color-white;
+        font-size: 3.5rem;
+    }
+    
+    .allArticlesHeaderContent p{
+        @include text;
+        color: vars.$color-white;
+    
+    }
+}

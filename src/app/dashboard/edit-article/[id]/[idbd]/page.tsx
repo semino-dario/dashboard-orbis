@@ -1,5 +1,5 @@
 import styles from "../../../../page.module.scss";
-import CreateArticle from "../../../../components/CreateArticle";
+import CreateArticle from "../../../components/CreateArticle";
 import { FetchOneArticle } from "@/app/lib/datafetch";
 
 export default async function EditArticle({params}: {params: {id: number, idbd:string}}) {
@@ -14,7 +14,6 @@ export default async function EditArticle({params}: {params: {id: number, idbd:s
         <div className="">
           { article &&
         <div>
-          <h1>Edit Article</h1>
             <CreateArticle
               mainTitle={article.mainTitle}
               mainImage={article.mainImage}

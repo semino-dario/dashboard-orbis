@@ -1,0 +1,71 @@
+@use '../vars';
+
+.alertBG{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent */
+  }
+  
+  .alert{
+    background-color: vars.$primary-color-dark ;
+    color: vars.$secondary-color-dark;
+    width: 40rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 1px vars.$secondary-color-dark;
+    border-radius: 10px;
+    z-index: 100;
+  }
+  
+  .alertDeleteContainer{
+    width: auto;
+    height: auto;
+    padding: 3%;
+  }
+  
+  .alertDeleteGrid{
+    grid-template-columns: 30% 30% 40%;
+    margin-block: 3rem;
+  }
+  
+  .containerDeleteButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 5rem;
+  }
+
+  .gridMedia{
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:10px;
+    width: 57vw;
+    }
+  
+    .imageGrid {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      cursor:pointer;
+    }
+  
+   .imageGrid:hover{
+    opacity: 0.8;
+   }
+  
+   .imageSelected{
+    border: 1px solid red;
+    opacity: 1;
+   }

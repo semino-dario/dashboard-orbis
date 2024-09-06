@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from "./db"
+import { closeConnection, connectToDatabase } from "./db"
 import { ObjectId } from 'mongodb';
 
 
 export async function POST(req: NextRequest) {
     try {
         const data = await req.json();
-        const { collection } = await connectToDatabase();
+        const { collection } = await connectToDatabase('articles');
         const result = await collection.insertMany(Array.isArray(data) ? data : [data]);
 
         const response = NextResponse.json(result, { status: 200 });
@@ -21,12 +21,11 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
     try {
-        const { collection } = await connectToDatabase();
+        const { collection } = await connectToDatabase('articles');
         const articles = await collection.find().toArray();
 
         const response = NextResponse.json(articles, { status: 200 });
         response.headers.set('Cache-Control', 'no-store');
-
         return response
     } catch (error) {
         console.error('Error fetching articles:', error);
@@ -52,13 +51,12 @@ export async function DELETE(req:NextRequest) {
         if (!ObjectId.isValid(sanitizedId)) {
             return NextResponse.json({ error: 'ID must be a valid ObjectId' }, { status: 400 });
         }
-        const { collection } = await connectToDatabase();
+        const { collection } = await connectToDatabase('articles');
         const result = await collection.deleteOne({ _id: new ObjectId(id) });
 
         if (result.deletedCount === 0) {
             return NextResponse.json({ error: 'Article not found' }, { status: 404 });
         }
-
         return NextResponse.json(result, { status: 200 });
     } catch (error) {
         console.error('Error deleting article:', error);

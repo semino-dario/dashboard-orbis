@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from "../../db"
+import {  connectToDatabase } from "../../db"
 import { ObjectId } from 'mongodb';
 
 function isValidObjectId(id: string) {
@@ -23,13 +23,12 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         }
 
         const data = await req.json();
-        const { collection } = await connectToDatabase();
+        const { collection } = await connectToDatabase('articles');
         const result = await collection.updateOne({ _id: new ObjectId(sanitizedId) }, { $set: data });
 
         if (result.matchedCount === 0) {
             return NextResponse.json({ error: 'Article not found' }, { status: 404 });
         }
-
         return NextResponse.json(result, { status: 200 });
     } catch (error) {
         console.error('Error updating article:', error);
@@ -55,7 +54,7 @@ export async function GET( id:NextRequest | Request ) {
             return NextResponse.json({ error: 'ID must be a valid ObjectId' }, { status: 400 });
         }
 
-        const { collection } = await connectToDatabase();
+        const { collection } = await connectToDatabase('articles');
         const article = await collection.findOne({ _id: new ObjectId(stringId) });
 
         if (!article) {

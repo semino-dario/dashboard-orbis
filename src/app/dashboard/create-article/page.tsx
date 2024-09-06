@@ -3,9 +3,9 @@
 import useAuth from "@/app/lib/hooks";
 import styles from "../../page.module.scss";
 import dynamic from "next/dynamic"
-import AlertAuth from "@/app/components/AlertAuth";
+import AlertAuth from "@/app/dashboard/components/AlertAuth";
 
-const CreateArticle = dynamic(() => import("../../components/CreateArticle"), {ssr: false}
+const CreateArticle = dynamic(() => import("../components/CreateArticle"), {ssr: false}
 )
 
 export default function NewArticle() {

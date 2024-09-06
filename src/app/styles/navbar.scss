@@ -1,0 +1,120 @@
+@use './vars';
+@import './mixins';
+
+.mainBar{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top:0;
+    background: vars.$color-white;
+    z-index: 1000;
+    height: 3.5rem;
+    @include box-shadow;
+
+}
+
+.nav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:1rem;
+    font-family: vars.$font-text;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: lighter;
+    padding-left: 0.5rem;
+    text-transform: capitalize;
+}
+
+.iconsContainer{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    margin-right: 2rem;
+    display: none;
+}
+
+.navIcon{
+    width: 2.3rem;
+    cursor:pointer;
+}
+
+
+
+.name{
+    display: none;
+}
+
+
+.navItemsContainer{
+    background: vars.$color-red;
+    @include title;
+    color: vars.$color-white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    width:100vw;
+    padding: 2rem;
+    height: 100vh;
+    border-right: 10px solid vars.$color-orange;
+
+    
+}
+
+.movePanel{
+    position: fixed;
+    top: 3.5rem;
+    left: 0px; 
+    transition: left 0.3s ease-in-out;
+    z-index: 800;
+}
+
+.closed{
+    left: -1000px;
+}
+
+.navList{
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+    list-style: none;
+}
+
+.navList li{
+    transition: color 0.4s ease-in-out, list-style-type 0.4s ease-in-out;
+}
+
+.navList li:hover {
+    color: vars.$color-orange;
+    list-style-type: disc;
+}
+
+
+.navbarImage{
+    width: 13.125rem;
+    height: auto;
+    margin-left: 6rem;
+    display: none;
+  
+}
+
+@media(min-width:500px){
+    .navItemsContainer{
+        width: 23rem;
+    }
+}
+
+@media (min-width: 600px) { 
+
+    .name{
+        display:block;
+    }
+
+    .iconsContainer{
+        display: flex;
+    }
+
+    .navbarImage{
+        display:block;
+    }
+}

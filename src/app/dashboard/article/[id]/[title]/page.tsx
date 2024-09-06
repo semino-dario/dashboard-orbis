@@ -1,5 +1,5 @@
 import React from 'react';
-import Article from "../../../../components/Article";
+import Article from "../../../components/Article";
 import { FetchOneArticle } from '@/app/lib/datafetch';
 
 export default async function SingleArticle  ({params}: {params: {id: string} })  {

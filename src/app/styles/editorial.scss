@@ -1,0 +1,56 @@
+@use './vars';
+@import './mixins';
+
+.editorialContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.editorialContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column-reverse;
+    width: 100%;
+    padding-inline: 9%;
+}
+
+.editorialImage{
+    margin-bottom:1.5rem;
+    width: 340px;
+}
+
+.asterixEditorial{
+    display: none;
+}
+
+.editorialButtonsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+    margin-top: 1rem;
+}
+
+@media(min-width: 900px){
+    .editorialContent{
+        flex-direction: row;
+    }
+
+    .editorialImage{
+        width: auto;
+    }
+
+    .asterixEditorial{
+        display: block;
+    }
+
+    .editorialButtonsContainer{
+        flex-direction: row;
+    }
+}

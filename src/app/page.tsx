@@ -1,17 +1,13 @@
-"use client"
-
-import Link from "next/link";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 import styles from "./page.module.scss";
-import React from 'react'
 
-export default function Home (){
-
-
-
+export default function MainSite() {
   return (
-    <div className={styles.main}>
-      <Link rel="stylesheet" href="/login" > <h1>Login to your dashboard</h1> </Link>
- </div>
+    <div className={styles.mainContainer}>
+      <Navbar/>
+      <Home/>
+    </div>
   );
 }
 

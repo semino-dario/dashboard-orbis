@@ -1,0 +1,19 @@
+@use './vars';
+@import './mixins.scss';
+
+.scrollHorizontalContainer{
+    margin-top:2rem;
+   margin-left: 2rem;
+}
+
+.scrollImage{
+    width: 150px;
+    display: inline;
+}
+
+@media(min-width:600px){
+    .scrollImage{
+        width: auto;
+
+    }
+}

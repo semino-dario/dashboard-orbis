@@ -1,0 +1,28 @@
+@use './vars';
+@import './mixins';
+
+.historiaContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.historiaImage{
+    max-width: 100%;
+    height: auto;
+}
+
+.historiaContent{
+    padding-inline: 1.5rem;
+}
+
+.historiaContainer p{
+    max-width: 550px;
+}
+
+@media(min-width:900px){
+    .historiaContainer{
+        flex-direction: row;
+    }
+}

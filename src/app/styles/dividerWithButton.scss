@@ -1,0 +1,40 @@
+@use './vars';
+@import './mixins';
+
+.dividerContainer{
+margin-block: 7rem;
+position: relative;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.dividerButton{
+position: absolute;
+background-color: vars.$color-red;
+padding: 0.5rem;
+@include title;
+color: vars.$color-white;
+text-align:center;
+transition: color 0.3s ease-in-out;
+
+}
+
+.dividerButton:hover, .dividerButton:focus{
+    color: vars.$color-orange;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background: black;
+}
+
+@media(min-width: 630px){
+.dividerButton{
+    border-radius: 4px;
+
+}
+}

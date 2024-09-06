@@ -1,0 +1,43 @@
+@use './vars';
+@import './mixins';
+
+.usadosContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: vars.$color-red;
+    width: 100%;
+    gap: 1rem;
+    padding-top: 4rem;
+}
+
+.usadosContainer h2{
+    color:vars.$color-white;
+}
+
+.underlineUsados{
+width: 300px;
+margin-bottom:3rem;
+}
+
+.usadosCardsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+}
+
+.bgShape{
+    width: 100%;
+}
+
+@media (min-width:700px) {
+    .usadosCardsContainer{
+        flex-direction: row;
+        gap:3rem;
+    }
+
+
+}

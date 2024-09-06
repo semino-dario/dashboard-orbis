@@ -1,0 +1,56 @@
+
+@mixin mainContainer{
+    max-width: 75rem;
+    margin: 0 auto;
+    width: 100%;
+    background: vars.$color-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@mixin title{
+    font-family: vars.$font-title;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: vars.$color-black;
+    font-size: 2.5rem;
+}
+
+@mixin text{
+    margin-top: 1rem;
+    font-family: vars.$font-text;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+@mixin articleText {
+    font-family: vars.$font-article;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+}
+
+@mixin articleTitle{
+    font-family: vars.$font-article;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+}
+
+
+@mixin linkInText{
+    font-weight: 700;
+}
+
+@mixin marginBottomSection{
+    margin-bottom: 10%;
+}
+

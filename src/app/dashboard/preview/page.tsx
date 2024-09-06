@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic"
-const Preview = dynamic(() => import("../../components/Preview"), {ssr: false}
+const Preview = dynamic(() => import("../components/Preview"), {ssr: false}
 )
 
 

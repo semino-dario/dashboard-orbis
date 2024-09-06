@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
-import { connectToDatabase, getUserByEmail } from '../../user';
+import { getUserByEmail } from '../../user';
+import { connectToDatabase } from '../../db';
 
 interface User {
     email: string;
@@ -8,7 +9,7 @@ interface User {
   }
 
 export async function POST(req: Request) {
- const {collection } =   await connectToDatabase();
+ const {collection } =   await connectToDatabase('user');
   
   if (!collection) {
     console.error('Collection is not initialized');
@@ -28,7 +29,7 @@ export async function POST(req: Request) {
   
       const newUser = { email, password: hashedPassword };
       await collection!.insertOne(newUser);
-  
+      
       return NextResponse.json({ message: 'User registered successfully' }, { status: 201 });
     } catch (error) {
       console.error('Error registering user:', error);

@@ -1,0 +1,32 @@
+@use './vars';
+@import './mixins';
+
+.cardSimple{
+    background: vars.$color-white;
+    border-radius: 15px;
+    padding: 6%;
+    width: 300px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cardButton{
+    background: vars.$color-green;
+    border-radius: 20px;
+    padding: 0.6rem 1rem;
+    @include articleText;
+    color: vars.$color-white;
+    min-width: 50px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+@media(min-width: 800px){
+    .cardSimple{
+        width: 350px;
+    }
+}

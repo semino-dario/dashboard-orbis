@@ -1,0 +1,71 @@
+@use '../vars';
+
+.allArticlesContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4rem;
+    }
+    
+    .articleData{
+    width: 70vw;
+    display: grid;
+    grid-template-columns: 25% 20% 45% 10%;
+    border: solid 1px vars.$secondary-color-dark;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    }
+    
+    
+    .titlesBar{
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    }
+    
+    .articleContent{
+      height: 8rem;
+    }
+    
+    .articleContent > img {
+      width: 100%;
+    }
+    
+    .articleText{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-inline: 2%;
+      text-align: center;
+    
+    }
+    
+    .buttonContent{
+      background-color: vars.$primary-color-dark;
+      border: solid 1px vars.$secondary-color-dark;
+      border-radius: 5px;
+      color:vars.$secondary-color-dark;
+      padding-inline: 1rem;
+      padding-block: 0.3rem;
+      font-size: 1rem;
+      cursor: pointer;
+      min-width: 5rem;
+    }
+    
+    .containerButtonsContent{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      align-items: center;
+      border-left:1px solid vars.$secondary-color-dark;
+    }
+   
+
+    .buttonContent:hover{
+      color:red;
+      border-color: red;
+    }

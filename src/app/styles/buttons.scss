@@ -1,0 +1,32 @@
+@use './vars';
+@import './mixins';
+
+
+.primaryButton{
+    background: vars.$color-red;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    font-family: vars.$font-text;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: white;
+    height: 1.8rem;
+    width: fit-content;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+
+}
+
+.primaryButton:hover, .primaryButton:focus{
+    @include box-shadow;
+}
+
+.secondaryButton{
+    @extend .primaryButton;
+    background-color: vars.$color-green;
+    height: 2.9rem;    
+}

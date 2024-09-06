@@ -1,0 +1,102 @@
+@use '../vars';
+
+.imageLoader{
+    padding-block: 1.5rem;
+    border: 1px green solid;
+    border-radius: 10px;
+  
+  }
+  
+  .imageLoader:focus-within{
+    border-color: red;
+  }
+  .containerImage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+  }
+  
+  .containerInputImage{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .inputImage{
+    border: solid 1px vars.$secondary-color-dark;
+    border-radius: 10px;
+    background-color: transparent;
+    height: 100% ;
+    color: vars.$secondary-color-dark;
+    font-size: 1rem;
+    width: 45%;
+    padding: 1%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inputImage:focus{
+    outline: none;
+    border-color: red;
+  
+  }
+  
+  .inputImage > p{
+    z-index:-1;
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  .file{
+    opacity: 0;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+  }
+  
+  .imageButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .imageButton:hover{
+    outline: none;
+    border-color: red;
+    color:red;
+  }
+  
+  .loadedImage{
+    border-radius: 10px;
+    width: 60vw;
+    height: 30rem;
+  }
+  
+  .changeImageButton{
+   background: transparent;
+   color: white;
+   align-self: flex-end;
+   margin-right: 1rem;
+   padding: 0.5rem;
+   border:solid 1px white;
+   border-bottom: none;
+   border-radius: 10px 10px 0px 0px;
+   cursor: pointer;
+  }
+  
+  .confirmImage{
+    position: absolute;
+    z-index:10;
+    margin:auto;
+    padding: 0.5rem;
+   border:solid 1px white;
+   border-radius: 10px;
+   background: transparent;
+   color: white;
+   font-size: 2rem;
+    }

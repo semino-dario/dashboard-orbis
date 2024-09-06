@@ -1,9 +1,9 @@
 "use client"
 import styles from "../../page.module.scss";
-import AllArticles from "../../components/AllArticles";
+import AllArticles from "../components/AllArticles";
 import { useEffect, useState } from "react";
 import useAuth from "@/app/lib/hooks";
-import AlertAuth from "@/app/components/AlertAuth";
+import AlertAuth from "@/app/dashboard/components/AlertAuth";
 
 export const fetchCache = 'force-no-store';
 

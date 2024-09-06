@@ -1,7 +1,7 @@
 "use client"
 
 import useAuth from '../lib/hooks';
-import AlertAuth from '../components/AlertAuth';
+import AlertAuth from './components/AlertAuth';
 
 export default function DashboardHome (){
 
